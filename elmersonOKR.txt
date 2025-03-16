@@ -1,1 +1,4 @@
-testt
+Map Building - Minimum 10 hours
+Texture research and implementation - At least 1 hour
+Lighting - At least 3 hours
+Obstacle implementation - At least 2 hours
