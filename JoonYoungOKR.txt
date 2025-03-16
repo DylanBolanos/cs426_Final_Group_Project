@@ -1,0 +1,8 @@
+Final OKR File
+
+JOONYOUNG MA
+
+Schedule and Deliverable:
+- Player Movement(estimate: 7) Interaction - Mar 17 by 11pm
+- Conflict and Specific Event while player walking straight, Sprinting(estimate 7) - Mar 18 by 11pm
+- Construct UI for Main & Shop (estimate 5) 
