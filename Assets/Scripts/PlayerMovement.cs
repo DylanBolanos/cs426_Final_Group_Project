@@ -1,0 +1,56 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 10f;
+    public float rotationSpeed = 100f;
+    public float force = 300f;
+    public Transform cameraTransform;
+    public float mouseSensitivity = 2.0f;
+    private float cameraRotationX = 0f;
+    public static bool isused = false;
+    bool canJump = true;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Rigidbody rb;
+    Transform t;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        t = GetComponent<Transform>();
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        cameraRotationX -= mouseY;
+        cameraRotationX = Mathf.Clamp(cameraRotationX, -90f, 90f);
+        cameraTransform.localRotation = Quaternion.Euler(cameraRotationX, 0f, 0f);
+        
+        if (Input.GetKey(KeyCode.W))
+            rb.linearVelocity += this.transform.forward * speed * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.S))
+            rb.linearVelocity -= this.transform.forward * speed * Time.deltaTime;
+
+        //rotation
+        if (Input.GetKey(KeyCode.D))
+            t.rotation *= Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
+        else if (Input.GetKey(KeyCode.A))
+            t.rotation *= Quaternion.Euler(0, - rotationSpeed * Time.deltaTime, 0);
+        
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            rb.AddForce(t.up * force);
+            canJump = false;
+            StartCoroutine(ResetJump());
+        }
+    }
+    IEnumerator ResetJump()
+    {
+        yield return new WaitForSeconds(1.5f);
+        canJump = true;
+    }
+}

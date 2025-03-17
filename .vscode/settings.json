@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CS426_Lab Simulator.sln"
+    "dotnet.defaultSolution": "cs426_Final_Group_Project.sln"
 }
