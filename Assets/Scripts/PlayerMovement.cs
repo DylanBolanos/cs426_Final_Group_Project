@@ -12,6 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private float cameraRotationX = 0f;
     public static bool isused = false;
     bool canJump = true;
+    // glass
+    private IInteractable nearbyInteractable = null;
+    private float interactionDistance = 0f;
+    private Transform nearbyObjectTransform; 
+
+    public GameObject heldGlass = null;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
     Transform t;
@@ -47,10 +55,68 @@ public class PlayerMovement : MonoBehaviour
             canJump = false;
             StartCoroutine(ResetJump());
         }
+
+        if(Input.GetKeyDown(KeyCode.F)){
+            TryInteract();
+        }
+        if(Input.GetKeyDown(KeyCode.G)){
+            DropGlass();
+        }
     }
     IEnumerator ResetJump()
     {
         yield return new WaitForSeconds(1.5f);
         canJump = true;
+    }
+
+    private void TryPickUpGlass()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.CompareTag("Glass"))
+            {
+                heldGlass = collider.gameObject;
+                heldGlass.transform.SetParent(this.transform);
+                heldGlass.transform.localPosition = new Vector3(0.5f, -0.5f, 1f);
+                heldGlass.GetComponent<Rigidbody>().isKinematic = true;
+                Debug.Log("Player Picked up glass");
+                return;
+            }
+        }
+    }
+
+    private void DropGlass()
+    {
+        heldGlass.transform.SetParent(null);
+        heldGlass.GetComponent<Rigidbody>().isKinematic = false;
+        heldGlass = null;
+        Debug.Log("Player Dropped off Glass");
+    }
+    
+    private void TryInteract(){
+        if (nearbyInteractable != null)
+        {
+            float distanceToObject = Vector3.Distance(transform.position, nearbyObjectTransform.position);
+            if (distanceToObject <= interactionDistance)
+            {
+                if (nearbyObjectTransform.CompareTag("Experiment") && heldGlass == null)
+                {
+                    Debug.Log("Need to Hold a Glass");
+                }
+                else
+                {
+                    nearbyInteractable.Interact();
+                }
+            }
+            else
+            {
+                Debug.Log("Too far");
+            }
+        }
+        else
+        {
+            TryPickUpGlass();
+        }
     }
 }
