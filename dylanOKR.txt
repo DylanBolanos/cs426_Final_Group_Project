@@ -1,0 +1,5 @@
+Schedule and deliverable:
+  build a prototype map no implimentation -- Tuesday 3/18 by 6pm (estimate: 2 hrs)
+  get resorce assets (Lab equpitment) -- thursday 3/20 by 5pm (estimate: 1 hrs)
+  Make a script for the player to interact with resorces -- thursday 3/20 by 7pm (estimate: 3 hrs)
+  
