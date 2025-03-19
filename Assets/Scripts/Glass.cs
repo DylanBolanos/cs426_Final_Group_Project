@@ -11,7 +11,7 @@ public class Glass : MonoBehaviour, IInteractable
         {
             player.heldGlass = this.gameObject;
             transform.SetParent(player.transform);
-            transform.localPosition = new Vector3(0.5f, 0.3f, 1f);
+            transform.localPosition = new Vector3(0.5f, 0.3f, 1f); // when the player is holding the glass
             transform.localRotation = Quaternion.identity;
             GetComponent<Rigidbody>().isKinematic = true;
             Debug.Log("Player Holds a glass");

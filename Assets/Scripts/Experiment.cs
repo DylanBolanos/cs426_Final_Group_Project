@@ -18,4 +18,7 @@ public class Experiment : MonoBehaviour, IInteractable
             Debug.Log("Need Glass");
         }
     }
+    void Start()
+    {
+    }
 }

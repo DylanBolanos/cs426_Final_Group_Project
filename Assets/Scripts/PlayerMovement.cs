@@ -97,21 +97,15 @@ public class PlayerMovement : MonoBehaviour
     private void TryInteract(){
         if (nearbyInteractable != null)
         {
-            float distanceToObject = Vector3.Distance(transform.position, nearbyObjectTransform.position);
+            float distanceToObject = Vector3.Distance(transform.position, nearbyObjectTransform.position);// distance between player and object
             if (distanceToObject <= interactionDistance)
             {
-                if (nearbyObjectTransform.CompareTag("Experiment") && heldGlass == null)
-                {
+                if (nearbyObjectTransform.CompareTag("Experiment") && heldGlass == null){
                     Debug.Log("Need to Hold a Glass");
                 }
-                else
-                {
+                else{
                     nearbyInteractable.Interact();
                 }
-            }
-            else
-            {
-                Debug.Log("Too far");
             }
         }
         else
