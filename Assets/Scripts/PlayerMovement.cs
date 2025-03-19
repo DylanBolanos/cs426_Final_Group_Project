@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            TryPickUpGlass();
+            TryPickUpGlass(); // it is definitely work
         }
     }
 }
