@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform nearbyObjectTransform; 
 
     public GameObject heldGlass = null;
-
+    private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.F)){
             TryInteract();
+            anim.SetTrigger("PickingUp");
         }
         if(Input.GetKeyDown(KeyCode.G)){
             DropGlass();
