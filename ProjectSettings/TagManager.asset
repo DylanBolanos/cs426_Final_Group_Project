@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Experiment
   - Glass
+  - CinemachineTarget
+  - Chemical_zone
+  - Main_platform
   layers:
   - Default
   - TransparentFX
