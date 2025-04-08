@@ -54,3 +54,18 @@ Conflict:
   Keeping the lab running:
     This will be the main conflict of the game
     Running experiments, and earning money will be the core gameplay look
+
+
+
+
+
+
+
+
+
+
+
+Citation
+1) https://youtu.be/xGnRamvfNK0?si=IzAOrfDXBYd0P_rW    // figure out the distance between AI and random destination, basic example of Finite State Machine
+2) https://youtu.be/OMc3-Q2N4zc?si=g2keFPkZF_jupCOR    // AI rotation& Changing Animation for each work
+3) https://youtu.be/nnrOhb5UdRc?si=IFt736Tpi44s47d6    // finding new destination in specific range
