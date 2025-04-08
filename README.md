@@ -71,10 +71,10 @@ JoonYoung Ma:
    Created Flask zone, it also has max capacity, when the player contact with button on Flask zone, new flask will appear, and it will be dropped on ground. Flask and button have rigid body and collider each. (Physics)
 
 Elmerson Tedja:
-1) Created an AI that chases down the player's position, this robot will act as an obstacle that will distract the player from accomplishing their objectives.
-2) Created Shelves at the back side of the map, and added sliding door physics into it for more interactivity between player and object. Shelves will still need to be opened manually through Unity3D.
-3) Added a trash/recycle object between the two shelves, no functionality added to it yet.
-4) Added spotlights to the objects that I created to improve visibility for players.
+1) Created an AI that chases down the player's position, this robot will act as an obstacle that will distract the player from accomplishing their objectives. This AI contains textures and mechanims.
+3) Created Shelves at the back side of the map, and added sliding door physics into it for more interactivity between player and object. Shelves will still need to be opened manually through Unity3D.
+4) Added a trash/recycle object between the two shelves, no functionality added to it yet.
+5) Added spotlights to the objects that I created to improve visibility for players.
 
 
 
@@ -90,3 +90,5 @@ Citation
 1) https://youtu.be/xGnRamvfNK0?si=IzAOrfDXBYd0P_rW    // figure out the distance between AI and random destination, basic example of Finite State Machine
 2) https://youtu.be/OMc3-Q2N4zc?si=g2keFPkZF_jupCOR    // AI rotation& Changing Animation for each work
 3) https://youtu.be/nnrOhb5UdRc?si=IFt736Tpi44s47d6    // finding new destination in specific range
+4) https://www.youtube.com/watch?v=u2EQtrdgfNs&t=356s  // AI chase tutorial
+5) https://www.youtube.com/watch?v=Vsj_UpnLFF8&t=246s  // Quick refresh on mechanims.
