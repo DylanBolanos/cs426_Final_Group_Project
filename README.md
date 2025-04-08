@@ -70,6 +70,12 @@ JoonYoung Ma:
    Created Chemical zone implemented by interface, that is having max capacity. When player placed Empty Flask on Chemical zone, zone will charge flask within 5 seconds.
    Created Flask zone, it also has max capacity, when the player contact with button on Flask zone, new flask will appear, and it will be dropped on ground. Flask and button have rigid body and collider each. (Physics)
 
+Elmerson Tedja:
+1) Created an AI that chases down the player's position, this robot will act as an obstacle that will distract the player from accomplishing their objectives.
+2) Created Shelves at the back side of the map, and added sliding door physics into it for more interactivity between player and object. Shelves will still need to be opened manually through Unity3D.
+3) Added a trash/recycle object between the two shelves, no functionality added to it yet.
+4) Added spotlights to the objects that I created to improve visibility for players.
+
 
 
 
