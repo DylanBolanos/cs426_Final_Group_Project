@@ -29,15 +29,13 @@ public class Refill_Robot : MonoBehaviour
                 platformBounds = platformCollider.bounds;
             }
         }
-        
-
         PickNewWanderPoint();
 
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
     }
 
-    void Update()
+    void Update() // get started
     {
         switch (currentState)
         {
@@ -125,7 +123,7 @@ public class Refill_Robot : MonoBehaviour
 
     void PickNewWanderPoint()
     {
-        // Main_platform 영역 내에서 랜덤 위치 지정
+        // Main_platform
         Vector3 randomPoint;
         int attempts = 0;
         do
