@@ -29,7 +29,7 @@ public class Refill_Robot : MonoBehaviour
                 platformBounds = platformCollider.bounds;
             }
         }
-        PickNewWanderPoint();
+        FindNewDestination();
 
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
@@ -43,7 +43,7 @@ public class Refill_Robot : MonoBehaviour
                 Patrol();
                 animator.SetBool("walking", true);
                 animator.SetBool("working", false);
-                SearchForEmptyZone();
+                SearchToRefill();
                 break;
 
             case State.MovingToZone:
@@ -52,7 +52,7 @@ public class Refill_Robot : MonoBehaviour
         }
     }
 
-    void SearchForEmptyZone()
+    void SearchToRefill()
     {
         foreach (var zone in FindObjectsOfType<Chemical_zone>())
         {
@@ -60,7 +60,7 @@ public class Refill_Robot : MonoBehaviour
             {
                 zoneToRefill = zone;
                 currentState = State.MovingToZone;
-                Debug.Log("Found empty zone, Refil_Robot is heading there!");
+                Debug.Log("Found empty zone, Refil_Robot is heading there!"); // need to modify, between chemical, Flask, and etc
                 break;
             }
         }
@@ -96,16 +96,16 @@ public class Refill_Robot : MonoBehaviour
             zoneToRefill.Refill();
             zoneToRefill = null;
             
-            Invoke(nameof(ResumeWandering), 5f); // refilling 
+            Invoke(nameof(ResumePatrol), 5f); // refilling 
             
         }
     }
 
-    void ResumeWandering()
+    void ResumePatrol() // restart walking
     {
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
-        PickNewWanderPoint();
+        FindNewDestination();
         currentState = State.Wandering;
 
         Debug.Log("Chemical zone is refilled by robot");
@@ -117,11 +117,11 @@ public class Refill_Robot : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
         {
-            PickNewWanderPoint();
+            FindNewDestination();
         }
     }
 
-    void PickNewWanderPoint()
+    void FindNewDestination()
     {
         // Main_platform
         Vector3 randomPoint;

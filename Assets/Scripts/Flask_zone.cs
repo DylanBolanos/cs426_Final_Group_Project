@@ -24,12 +24,12 @@ public class Flask_zone : MonoBehaviour
     {
         Instantiate(flaskPrefab, spawnPoint.position, spawnPoint.rotation);
         currentCapacity--;
-        Debug.Log("🥤 Flask dispensed! Remaining: " + currentCapacity);
+        Debug.Log("Flask provided! Remaining: " + currentCapacity);
     }
 
     public void RefillDispenser()
     {
         currentCapacity = maxCapacity;
-        Debug.Log("🔁 Dispenser refilled to max: " + maxCapacity);
+        Debug.Log("Dispenser refilled!");
     }
 }
