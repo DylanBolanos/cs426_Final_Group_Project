@@ -29,7 +29,7 @@ public class Glass : MonoBehaviour, IInteractable
             contactTime += Time.deltaTime;
             Debug.Log("Zone will fill Flask within 5sec" + contactTime);
 
-            if (contactTime >= 3f && currentZone.HasCapacity()) // need 3 seconds for charging
+            if (contactTime >= 5f && currentZone.HasCapacity()) // need 5 seconds for charging
             {
                 filled = true;
                 currentZone.UseOneCharge();
