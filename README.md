@@ -81,6 +81,11 @@ Elmerson Tedja:
 4) Added a trash/recycle object between the two shelves, no functionality added to it yet.
 5) Added spotlights to the objects that I created to improve visibility for players.
 
+Dylan Bolanos:
+1) Created the cleaning robot to find the broken glass object with tag to clean up the lab. The robot will free wander and find points to try and find any potential glasswith walking animation.
+2) Created the burner prefab as both a light and a new place for the player to interact with
+3) Made a Beaker with "Bubbles" coming out after 5 seconds but can be activated with a bool. This will be used later for interaction with burners
+4) Used a Mechanim to walk and clean with the robot from 1
 
 
 
