@@ -79,7 +79,9 @@ public class Refill_Robot : MonoBehaviour
 
     void MoveToZone()
     {
-        if (zoneToRefill == null) return;
+        if(zoneToRefill == null){
+            return;
+        }
 
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
