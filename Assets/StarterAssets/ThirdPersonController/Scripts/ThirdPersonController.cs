@@ -109,7 +109,6 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-        private GameObject heldGlass; // edited
 
         private bool IsCurrentDeviceMouse
         {
@@ -160,17 +159,6 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-
-            // Interaction logic _ Joon edit
-            if (_input.interact)
-            {
-                if (heldGlass == null)
-                    TryPickUpGlass();
-                else
-                    DropGlass();
-
-                _input.interact = false;
-            }
         }
 
         private void LateUpdate()
@@ -400,44 +388,5 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
-
-        private void TryPickUpGlass()
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
-            foreach (Collider collider in hitColliders)
-            {
-                if (collider.CompareTag("Glass"))
-                {
-                    heldGlass = collider.gameObject;
-                    heldGlass.transform.SetParent(this.transform);
-                    heldGlass.transform.localPosition = new Vector3(0f, 1f, 1f);
-                    heldGlass.transform.localRotation = Quaternion.identity;
-                    heldGlass.GetComponent<Rigidbody>().isKinematic = true;
-                    Debug.Log("Player Picked up glass");
-                    return;
-                }
-            }
-        }
-
-        private void DropGlass()
-        {
-            if (heldGlass == null) return;
-
-            heldGlass.transform.SetParent(null);
-            heldGlass.GetComponent<Rigidbody>().isKinematic = false;
-            heldGlass = null;
-            Debug.Log("Player Dropped off Glass");
-        }
-
-        public bool IsHoldingGlass()
-        {
-            return heldGlass != null;
-        }
-
-        public void DropHeldGlass()
-        {
-            DropGlass();
-        }
-
     }
 }

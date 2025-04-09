@@ -10,6 +10,7 @@ TagManager:
   - Chemical_zone
   - Main_platform
   - Shelf
+  - BrokenGlass
   layers:
   - Default
   - TransparentFX
