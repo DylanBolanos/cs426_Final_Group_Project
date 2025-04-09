@@ -68,8 +68,10 @@ https://docs.google.com/document/d/1y0-kU-7dbGl9N9CIEbYwioqkXDLTmf0fkhl3eEU8Z2U/
 Explanation about Work in Assignment 6
 JoonYoung Ma:
 1) Refill_Patrol Robot implemented by a finite statemachine AI, that is wandering in Main Stage boundary
-   if there is lack in Chemical zone's capacity, robot will head to Chemical zone, after robot arrived zone, it will act    working animation, and then it will be return to Patrol with walking animation.
-2) Chemical Zone, Flask zone
+   if there is lack in Chemical zone's capacity, robot will head to Chemical zone, after robot arrived zone, it will act    working animation, and then it will be return to Walking.
+   In this AI Mecanim, Walking Animation and Working Animation are applied with skin.
+   
+3) Chemical Zone, Flask zone
    Created Chemical zone implemented by interface, that is having max capacity. When player placed Empty Flask on Chemical zone, zone will charge flask within 5 seconds.
    Created Flask zone, it also has max capacity, when the player contact with button on Flask zone, new flask will appear, and it will be dropped on ground. Flask and button have rigid body and collider each. (Physics)
 
