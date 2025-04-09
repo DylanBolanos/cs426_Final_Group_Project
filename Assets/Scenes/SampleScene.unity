@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCapacity: 3
-  currentCapacity: 3
+  currentCapacity: 1
 --- !u!1001 &1504927317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5948,6 +5948,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 897883047}
     m_Modifications:
+    - target: {fileID: 138735758533324374, guid: bdfb91807c737be45ab32cda99ee854c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904169663139185386, guid: bdfb91807c737be45ab32cda99ee854c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6473209589804307588, guid: bdfb91807c737be45ab32cda99ee854c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.96
