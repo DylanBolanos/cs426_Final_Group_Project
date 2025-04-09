@@ -55,6 +55,9 @@ Conflict:
     This will be the main conflict of the game
     Running experiments, and earning money will be the core gameplay look
 
+Google Design Document
+https://docs.google.com/document/d/1hdoo0mKjeMYYgq0EDBBi-C8dSeENMVNMY_13-_xXsoE/edit?usp=sharing 
+
 
 
 Assignment 6
