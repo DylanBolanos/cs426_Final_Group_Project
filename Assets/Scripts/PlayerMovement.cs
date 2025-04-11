@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.F)){
             TryInteract();
-            anim.SetTrigger("PickingUp");
+            // anim.SetTrigger("PickingUp");
         }
         if(Input.GetKeyDown(KeyCode.G)){
             DropGlass();
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator ResetJump()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         canJump = true;
     }
 
@@ -75,12 +75,12 @@ public class PlayerMovement : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (Collider collider in hitColliders)
         {
-            Debug.Log("Nearby: " + collider.name);
+            // Debug.Log("Nearby: " + collider.name);
             if (collider.CompareTag("Glass"))
             {
                 heldGlass = collider.gameObject;
                 heldGlass.transform.SetParent(this.transform);
-                heldGlass.transform.localPosition = new Vector3(0.5f, -0.5f, 1f);
+                heldGlass.transform.localPosition = new Vector3(0.0f, 0.5f, 1f); // Flask's location when player is holding
                 heldGlass.GetComponent<Rigidbody>().isKinematic = true;
                 Debug.Log("Player Picked up glass");
                 return;
@@ -94,6 +94,17 @@ public class PlayerMovement : MonoBehaviour
         heldGlass.GetComponent<Rigidbody>().isKinematic = false;
         heldGlass = null;
         Debug.Log("Player Dropped off Glass");
+        // if (heldGlass != null)
+        // {
+        //     heldGlass.transform.SetParent(null);
+        //     Rigidbody rb = heldGlass.GetComponent<Rigidbody>();
+        //     if (rb != null)
+        //     {
+        //         rb.isKinematic = false;
+        //     }
+        //     heldGlass = null;
+        //     Debug.Log("Player Dropped off Glass");
+        // }
     }
     
     private void TryInteract(){

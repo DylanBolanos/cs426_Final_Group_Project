@@ -4092,6 +4092,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1957412144152276, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1970766640170394, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -5185,6 +5189,7 @@ GameObject:
   - component: {fileID: 2610608623470542210}
   - component: {fileID: 1771288608961896946}
   - component: {fileID: 8391488971190127375}
+  - component: {fileID: 8391488971190127376}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -7536,9 +7541,36 @@ MonoBehaviour:
   speed: 10
   rotationSpeed: 100
   force: 300
-  cameraTransform: {fileID: 6483030108008110329}
+  cameraTransform: {fileID: 4135875607475680214}
   mouseSensitivity: 2
   heldGlass: {fileID: 6865977205321544128, guid: bdfb91807c737be45ab32cda99ee854c, type: 3}
+--- !u!54 &8391488971190127376
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771288608961896958}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &8493730875202492530
 MeshRenderer:
   m_ObjectHideFlags: 0
