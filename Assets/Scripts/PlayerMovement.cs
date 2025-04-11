@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator ResetJump()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
 
