@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (Collider collider in hitColliders)
         {
+            Debug.Log("Nearby: " + collider.name);
             if (collider.CompareTag("Glass"))
             {
                 heldGlass = collider.gameObject;

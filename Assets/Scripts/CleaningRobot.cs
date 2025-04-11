@@ -15,8 +15,10 @@ public class CleaningRobot : MonoBehaviour
     [SerializeField] private float wanderRadius = 10f;
 
     private Vector3 targetPosition;
-    [SerializeField] private string brokenGlassTag;
+    // [SerializeField] private string brokenGlassTag;
+    [SerializeField] private string brokenGlassTag = "BrokenGlass"; 
     private Animator animator;
+    
 
     private Bounds platformBounds;
 
