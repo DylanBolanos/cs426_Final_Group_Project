@@ -10,6 +10,7 @@ public class Refill_Robot : MonoBehaviour
 
     private Vector3 targetPosition;
     private Chemical_zone zoneToRefill;
+    private Flask_zone flaskZoneTarget;
     private Animator animator;
 
     private Bounds platformBounds;
@@ -29,6 +30,7 @@ public class Refill_Robot : MonoBehaviour
                 platformBounds = platformCollider.bounds;
             }
         }
+
         FindNewDestination();
 
         animator.SetBool("walking", true);
@@ -59,47 +61,79 @@ public class Refill_Robot : MonoBehaviour
             if (zone != null && zone.currentCapacity < 3)
             {
                 zoneToRefill = zone;
+                flaskZoneTarget = null;
                 currentState = State.MovingToZone;
-                Debug.Log("Found empty zone, Refil_Robot is heading there!"); // need to modify, between chemical, Flask, and etc
-                break;
+                Debug.Log("Found Chemical zone, Refil_Robot is heading there!"); // need to modify, between chemical, Flask, and etc
+                return;
             }
         }
-    }
 
-    void RotateTowards(Vector3 target)
-    {
-        Vector3 direction = (target - transform.position).normalized;
-        if (direction != Vector3.zero)
+        foreach (var zone in FindObjectsOfType<Flask_zone>())
         {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-        }
-    }
+            var flaskZoneType = zone.GetType();
+            var capacityField = flaskZoneType.GetField("currentCapacity", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            int currentFlaskCount = (int)capacityField.GetValue(zone);
 
+            if (currentFlaskCount < 3)
+            {
+                flaskZoneTarget = zone;
+                zoneToRefill = null;
+                currentState = State.MovingToZone;
+                Debug.Log("Found Flask zone is empty, Refill_Robot is heading there!");
+                return;
+            }
+        }
+        if (zoneToRefill == null && flaskZoneTarget == null)
+        {
+            currentState = State.Wandering;
+            Debug.Log("No zone needs refill. Continue wandering.");
+        }
+
+    }
 
     void MoveToZone()
     {
-        if(zoneToRefill == null){
+        Vector3? target = null;
+
+        if (zoneToRefill != null)
+            target = zoneToRefill.transform.position;
+        else if (flaskZoneTarget != null)
+            target = flaskZoneTarget.transform.position;
+
+        if (!target.HasValue)
+        {
             return;
         }
 
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
 
-        RotateTowards(zoneToRefill.transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, zoneToRefill.transform.position, speed * Time.deltaTime);
+        RotateTowards(target.Value);
+        transform.position = Vector3.MoveTowards(transform.position, target.Value, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, zoneToRefill.transform.position) < 1.5f)
+        if (Vector3.Distance(transform.position, target.Value) < 1.5f)
         {
             animator.SetBool("walking", false);
             animator.SetBool("working", true);
 
-            Debug.Log("Chemical zone is refilling by robot");
-            zoneToRefill.Refill();
-            zoneToRefill = null;
-            
+            // Debug.Log("Chemical zone is refilling by robot");
+            // zoneToRefill.Refill();
+            // zoneToRefill = null;
+            if (zoneToRefill != null)
+            {
+                zoneToRefill.Refill();
+                zoneToRefill = null;
+                Debug.Log("Refilled chemical zone.");
+            }
+
+            if (flaskZoneTarget != null)
+            {
+                flaskZoneTarget.RefillDispenser();
+                flaskZoneTarget = null;
+                Debug.Log("Refilled flask zone.");
+            }
+
             Invoke(nameof(ResumePatrol), 5f); // refilling 
-            
         }
     }
 
@@ -137,5 +171,15 @@ public class Refill_Robot : MonoBehaviour
         } while (!platformBounds.Contains(randomPoint) && attempts < 10);
 
         targetPosition = randomPoint;
+    }
+
+    void RotateTowards(Vector3 target)
+    {
+        Vector3 direction = (target - transform.position).normalized;
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
     }
 }

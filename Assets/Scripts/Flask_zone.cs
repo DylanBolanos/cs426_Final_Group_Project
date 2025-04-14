@@ -30,6 +30,6 @@ public class Flask_zone : MonoBehaviour
     public void RefillDispenser()
     {
         currentCapacity = maxCapacity;
-        Debug.Log("Dispenser refilled!");
+        Debug.Log("Dispenser is refilling");
     }
 }
