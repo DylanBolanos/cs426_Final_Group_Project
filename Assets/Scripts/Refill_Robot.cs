@@ -15,6 +15,9 @@ public class Refill_Robot : MonoBehaviour
 
     private Bounds platformBounds;
 
+    private AudioSource walkingAudio;
+    private AudioSource workingAudio;
+
     void Start()
     {
         currentState = State.Wandering;
@@ -35,6 +38,17 @@ public class Refill_Robot : MonoBehaviour
 
         animator.SetBool("walking", true);
         animator.SetBool("working", false);
+
+        // get audio sources in robot
+        AudioSource[] audios = GetComponents<AudioSource>();
+        if (audios.Length >= 2)
+        {
+            walkingAudio = audios[0];
+            workingAudio = audios[1];
+
+            walkingAudio.loop = true;
+            workingAudio.loop = true;
+        }
     }
 
     void Update() // get started
@@ -46,10 +60,12 @@ public class Refill_Robot : MonoBehaviour
                 animator.SetBool("walking", true);
                 animator.SetBool("working", false);
                 SearchToRefill();
+                PlayWalkingSound();
                 break;
 
             case State.MovingToZone:
                 MoveToZone();
+                // PlayWalkingSound();
                 break;
         }
     }
@@ -111,14 +127,18 @@ public class Refill_Robot : MonoBehaviour
         RotateTowards(target.Value);
         transform.position = Vector3.MoveTowards(transform.position, target.Value, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.Value) < 1.5f)
+        if (Vector3.Distance(transform.position, target.Value) >= 1.5f)
+        {
+            animator.SetBool("walking", true);
+            animator.SetBool("working", false);
+            PlayWalkingSound();
+        }
+        else
         {
             animator.SetBool("walking", false);
             animator.SetBool("working", true);
-
-            // Debug.Log("Chemical zone is refilling by robot");
-            // zoneToRefill.Refill();
-            // zoneToRefill = null;
+            PlayWorkingSound();
+            
             if (zoneToRefill != null)
             {
                 zoneToRefill.Refill();
@@ -133,8 +153,9 @@ public class Refill_Robot : MonoBehaviour
                 Debug.Log("Refilled flask zone.");
             }
 
-            Invoke(nameof(ResumePatrol), 5f); // refilling 
+            Invoke(nameof(ResumePatrol), 5f);
         }
+
     }
 
     void ResumePatrol() // restart walking
@@ -143,7 +164,7 @@ public class Refill_Robot : MonoBehaviour
         animator.SetBool("working", false);
         FindNewDestination();
         currentState = State.Wandering;
-
+        PlayWalkingSound();
         Debug.Log("Chemical zone is refilled by robot");
     }
 
@@ -181,5 +202,23 @@ public class Refill_Robot : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
+    }
+
+    void PlayWalkingSound()
+    {
+        if (walkingAudio != null && !walkingAudio.isPlaying)
+            walkingAudio.Play();
+
+        if (workingAudio != null && workingAudio.isPlaying)
+            workingAudio.Stop();
+    }
+
+    void PlayWorkingSound()
+    {
+        if (workingAudio != null && !workingAudio.isPlaying)
+            workingAudio.Play();
+
+        if (walkingAudio != null && walkingAudio.isPlaying)
+            walkingAudio.Stop();
     }
 }
