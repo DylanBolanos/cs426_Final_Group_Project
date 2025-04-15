@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShelfTrigger : MonoBehaviour
 {
     public DoorController door;
+    public AudioSource audioSource;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -11,6 +12,7 @@ public class ShelfTrigger : MonoBehaviour
             Debug.Log("Collide");
             if (door != null)
             {
+                audioSource.Play();
                 door.ToggleDoor();
             }
         }
