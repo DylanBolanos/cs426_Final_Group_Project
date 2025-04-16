@@ -22,6 +22,9 @@ public class CleaningRobot : MonoBehaviour
 
     private Bounds platformBounds;
 
+    private AudioSource cleaningAudio;
+    private AudioSource walkingAudio;
+
     void Start(){
         _agent = GetComponent<NavMeshAgent>();
         currentState = State.Wandering;
@@ -38,6 +41,16 @@ public class CleaningRobot : MonoBehaviour
         FindNewDestination();
 
         animator.SetBool("Walking", true);
+
+        AudioSource[] audios = GetComponents<AudioSource>();
+        if (audios.Length >= 2)
+        {
+            walkingAudio = audios[0];
+            cleaningAudio = audios[1];
+
+            walkingAudio.loop = true;
+            cleaningAudio.loop = true;
+        }
     }
 
     void Update(){
@@ -47,7 +60,9 @@ public class CleaningRobot : MonoBehaviour
                 Patrol();
                 animator.SetBool("Walking", true);
                 animator.SetBool("Cleaning",false);
+                PlayWalkingSound();
                 SearchForGlass();
+            
                 break;
 
             case State.MovingToGlass:
@@ -55,6 +70,7 @@ public class CleaningRobot : MonoBehaviour
                 break;
 
             case State.CleaningGlass:
+                PlayCleaningSound();
                 CleaningGlass();
                 break;
         }
@@ -123,5 +139,23 @@ public class CleaningRobot : MonoBehaviour
             currentState = State.Wandering;
             Destroy(holdGlass);
         }
+    }
+
+        void PlayWalkingSound()
+    {
+        if (walkingAudio != null && !walkingAudio.isPlaying)
+            walkingAudio.Play();
+
+        if (cleaningAudio != null && cleaningAudio.isPlaying)
+            cleaningAudio.Stop();
+    }
+
+    void PlayCleaningSound()
+    {
+        if (cleaningAudio != null && !cleaningAudio.isPlaying)
+            cleaningAudio.Play();
+
+        if (walkingAudio != null && walkingAudio.isPlaying)
+            walkingAudio.Stop();
     }
 }
