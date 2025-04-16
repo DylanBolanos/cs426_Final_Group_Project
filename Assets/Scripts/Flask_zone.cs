@@ -25,6 +25,12 @@ public class Flask_zone : MonoBehaviour
         Instantiate(flaskPrefab, spawnPoint.position, spawnPoint.rotation);
         currentCapacity--;
         Debug.Log("Flask provided! Remaining: " + currentCapacity);
+
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null && !audio.isPlaying)
+        {
+            audio.Play();
+        }
     }
 
     public void RefillDispenser()
