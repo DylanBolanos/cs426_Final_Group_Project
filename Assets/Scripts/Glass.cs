@@ -6,6 +6,16 @@ public class Glass : MonoBehaviour, IInteractable
     private float contactTime = 0f;
     private bool inZone = false;
     private Chemical_zone currentZone;
+    private MeshRenderer meshRenderer;
+
+    public Material baseMaterial;     // 비었을 때
+    public Material filledMaterial;   // 채워졌을 때
+
+    void Start()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+       // UpdateMaterial();
+    }
 
     public void Interact()
     {
@@ -34,8 +44,19 @@ public class Glass : MonoBehaviour, IInteractable
                 filled = true;
                 currentZone.UseOneCharge();
                 Debug.Log("Glass filled!!");
+                UpdateMaterial();
             }
         }
+    }
+    void UpdateMaterial()
+    {
+        if (meshRenderer == null) return;
+
+        Material[] materials = meshRenderer.materials;
+
+        materials[0] = filled ? filledMaterial : baseMaterial;
+
+        meshRenderer.materials = materials;
     }
 
     void OnTriggerEnter(Collider other)

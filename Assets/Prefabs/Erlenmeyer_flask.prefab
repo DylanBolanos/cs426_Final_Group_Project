@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6126524987065872404}
   - component: {fileID: 4597505049931957193}
   - component: {fileID: 138735758533324374}
-  - component: {fileID: 2767612377802001348}
   - component: {fileID: 2904169663139185386}
   m_Layer: 0
   m_Name: Erlenmeyer_flask
@@ -130,19 +129,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
---- !u!114 &2767612377802001348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6865977205321544128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c298bd409b22040bb922826cac0179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filled: 0
 --- !u!136 &2904169663139185386
 CapsuleCollider:
   m_ObjectHideFlags: 0
