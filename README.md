@@ -89,6 +89,43 @@ Dylan Bolanos:
 
 
 
+Assignment 8
+Adapted Shader
+JoonYoung Ma:
+From the Feedback 3, I realized I need to some difference between empty glass and filled glass in graphic. To enhance the visual clarity and immersion of the game, I implemented a custom shader for the empty glass object. The new shader gives the glass a transparent, slightly glowing appearance with soft rim lighting, and litle refraction.
+
+
+Response about Alpha Release Feedback
+Tester 1)
+Testing for 8 minutes
+Feedback 1: Robot does not move, it does not move from its position
+Tester noticed that the robot character remained stationary and performed walking animation, but it did not move from its position. This broke immersion and made the environment feel static.
+Fixed: 
+
+Feedback 2: Player's Jump key is not working
+Fixed: Basically, Jump key is not in our plan, We deleted.
+
+
+Tester 2)
+Testing for 10 minutes
+Feedback 3: Environment objects(table, chairs) are missing proper colliders
+Tester was able to walk through tables and other environmental objects, indicating that proper collides were not set. And Some AI was passing through tables.
+Fixed: We adjusted overall collider, those objects are unique, I could not set specific collider. I set right collider boundary.
+
+Feedback 4: Glass charging status is only visible via console logs
+Tester asked me how to figure out between charged glass and empty glass, this information was only printed in the console prompt.
+Fixed: Previously, Overall Flasks are having filled material, So I added custom shader for empty Flask. That will help Player figure out right Flask.
+
+
+Tester 3)
+Testing for 8 minutes
+Feedback 5: Players can pick up multiple glasses at once, when a player tries to pick up while it was already picking up glass.
+Fixed: 
+
+
+Feedback 6: Overall activities that the player can enjoy, is not enough, need to add something.
+Overall, the gameplay lacks sufficient interactive activities for the player to enjoy. More mini games or interactive elements should be added.
+Fixed: That was Alpha Release version, We will add extra interactive activities.
 
 
 
