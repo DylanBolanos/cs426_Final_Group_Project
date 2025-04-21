@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 2.0f;
     private float cameraRotationX = 0f;
     public static bool isused = false;
-    bool canJump = true;
     // glass
     private IInteractable nearbyInteractable = null;
     private float interactionDistance = 0f;
@@ -48,13 +47,7 @@ public class PlayerMovement : MonoBehaviour
             t.rotation *= Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
         else if (Input.GetKey(KeyCode.A))
             t.rotation *= Quaternion.Euler(0, - rotationSpeed * Time.deltaTime, 0);
-        
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
-            rb.AddForce(t.up * force);
-            canJump = false;
-            StartCoroutine(ResetJump());
-        }
+    
 
         if(Input.GetKeyDown(KeyCode.F)){
             TryInteract();
@@ -63,11 +56,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G)){
             DropGlass();
         }
-    }
-    IEnumerator ResetJump()
-    {
-        yield return new WaitForSeconds(0.1f);
-        canJump = true;
     }
 
     private void TryPickUpGlass()

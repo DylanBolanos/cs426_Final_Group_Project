@@ -2,23 +2,37 @@ using UnityEngine;
 
 public class Experiment : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
-    
+    public float detectRadius = 2f;
+    [SerializeField] private GameObject miniGameUI; // UI 오브젝트를 inspector에서 할당
+
     public void Interact()
     {
-        PlayerMovement player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-        if (player.heldGlass != null)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectRadius);
+
+        foreach (Collider collider in colliders)
         {
-            Debug.Log("Experiment has been activated");
-            //PerformExperiment(); // Small game during interacting with Experiment.
+            Glass glass = collider.GetComponent<Glass>();
+            if (glass != null && glass.filled)
+            {
+                Debug.Log("✔️ Filled glass detected. Activating MiniGame UI...");
+                if (miniGameUI != null)
+                {
+                    miniGameUI.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("⚠️ MiniGame UI is not assigned in the inspector.");
+                }
+                return;
+            }
         }
-        else
-        {
-            Debug.Log("Need Glass");
-        }
+
+        Debug.Log("❌ No filled glass nearby. Experiment not available.");
     }
-    void Start()
+
+    void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 }
