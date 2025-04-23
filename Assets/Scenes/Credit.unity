@@ -1028,7 +1028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -141, y: -1593}
+  m_AnchoredPosition: {x: -141, y: -2009}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064900247
@@ -1051,133 +1051,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CREDITS
-
-
-
-
-    DEVELOPERS
-
-
-    JoonYoung Ma
-
-    Elmerson Tedja
-
-    Dylan
-    Bolanos
-
-
-
-
-    ART REFERENCES
-
-
-
-    Logo _ MainMenu
-
-
-    Designed by JoonYoung
-    Ma
-
-
-
-    Walls and Floor Texture
-
-
-    Brick Project Studio
-
-
-
-    Character
-    Models
-
-
-    Synty Studios
-
-    Adobe Mixamo
-
-    Starter Pack - Synty POLYGON
-    - Stylized Low Poly 3D Art _ UnityAsset
-
-
-
-    Animations
-
-
-    Adobe Mixamo
-
-    Starter
-    Pack - Synty POLYGON - Stylized Low Poly 3D Art
-
-
-
-    OBJECT DESIGN
-
-
-    Chemistry
-    Lab Items Pack _ Unity Asset
-
-
-
-
-    SOUNDS
-
-
-
-
-    Background Music
-
-
-    Serge
-    Quadrado
-
-
-
-
-    Door Sounds
-
-
-    hasin2004
-
-
-
-
-    Glass Breaking Sound
-
-
-    SwishSwoosh
-
-
-
-
-    Footstep
-    Sounds
-
-
-    Sound Works 12
-
-
-
-    FootSound _ Refiil_Robot
-
-
-    https://freesound.org/
-
-
-
-    Wolking
-    Sound _ Refill_Robot
-
-
-    https://freesound.org/
-
-
-
-
-
-
-    UIC CS426 Videogame
-    Design'
+  m_text: "CREDITS\n\n\n\nDEVELOPERS\n\nJoonYoung Ma\nElmerson Tedja\nDylan Bolanos\n\n\n\nART
+    REFERENCES\n\n\nLogo _ MainMenu\n\nDesigned by JoonYoung Ma\n\n\nWalls and Floor
+    Texture\n\nBrick Project Studio\n\n\nCharacter Models\n\nSynty Studios\nAdobe
+    Mixamo\nStarter Pack - Synty POLYGON - Stylized Low Poly 3D Art _ UnityAsset\n\n\nAnimations\n\nAdobe
+    Mixamo\nStarter Pack - Synty POLYGON - Stylized Low Poly 3D Art\n\n\nOBJECT DESIGN\n\nChemistry
+    Lab Items Pack _ Unity Asset\n\n\n\nSOUNDS\n\n\n\nBackground Music\n\nSerge Quadrado\n\n\n\nDoor
+    Sounds\n\nhasin2004\n\n\n\nGlass Breaking Sound\n\nSwishSwoosh\n\n\n\nFootstep
+    Sounds\n\nSound Works 12\n\n\nFootSound _ Refiil_Robot\n\nhttps://freesound.org/\n\n\nWolking
+    Sound _ Refill_Robot\n\nhttps://freesound.org/\n\n\nFree Pop Sound Effects Pack\nhttps://assetstore.unity.com/packages/audio/sound-fx/free-pop-sound-effects-pack-263821\nBy:
+    SwishSwoosh\n\n\nFootsteps Small Sound Pack\nhttps://assetstore.unity.com/packages/audio/sound-fx/footsteps-small-sound-pack-262072\nBy:
+    Sound Works 12\n\nRobot Kyle \nhttps://assetstore.unity.com/packages/3d/characters/robots/robot-kyle-urp-4696\nBy:
+    Unity Technologies\n\n\nUIC CS426 Videogame Design"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
