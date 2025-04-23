@@ -39,7 +39,9 @@ Shader "Custom/Shader_Joon"
             float4 _Color;
             float4 _RimColor;
             float _RimPower;
-            float _Wobble;
+            float _Wobble; // I heard that is kind of effect that is added based on time and the object’s world position
+            // but I just added from https://assetstore.unity.com/packages/vfx/shaders/wobble-effects-shaders-built-in-renderer-105863?srsltid=AfmBOoqtI3NOmdK2GEbDOZT3Kd1E7ABDUo4WvYKIO7c3Jdqq7j0jci3G 
+            // I took the code apart to understand it, and used it.
 
             Varyings vert (Attributes IN)
             {
@@ -63,7 +65,7 @@ Shader "Custom/Shader_Joon"
                 return float4(finalColor, _Color.a * rim);
             }
 
-            ENDHLSL
+            ENDHLSL // end of HLSL
         }
     }
 }
