@@ -23,5 +23,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void CreditClick(){
+        SceneManager.LoadScene(2);
+    }
 
 }

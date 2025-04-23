@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 70
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -884,7 +884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8, y: -8}
+  m_AnchoredPosition: {x: 109, y: -90}
   m_SizeDelta: {x: 140.52222, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1991428962
@@ -1073,43 +1073,49 @@ MonoBehaviour:
 
 
 
+    Logo _ MainMenu
+
+
+    Designed by JoonYoung
+    Ma
+
+
 
     Walls and Floor Texture
 
 
-    Brick Project
-    Studio
+    Brick Project Studio
 
 
 
-
-    Character Models
+    Character
+    Models
 
 
     Synty Studios
 
     Adobe Mixamo
 
-    Starter
-    Pack - Synty POLYGON - Stylized Low Poly 3D Art _ UnityAsset
+    Starter Pack - Synty POLYGON
+    - Stylized Low Poly 3D Art _ UnityAsset
 
 
 
     Animations
 
 
-    Adobe
-    Mixamo
+    Adobe Mixamo
 
-    Starter Pack - Synty POLYGON - Stylized Low Poly 3D Art
-
-
-
-    OBJECT
-    DESIGN
+    Starter
+    Pack - Synty POLYGON - Stylized Low Poly 3D Art
 
 
-    Chemistry Lab Items Pack _ Unity Asset
+
+    OBJECT DESIGN
+
+
+    Chemistry
+    Lab Items Pack _ Unity Asset
 
 
 
@@ -1119,11 +1125,11 @@ MonoBehaviour:
 
 
 
-    Background
-    Music
+    Background Music
 
 
-    Serge Quadrado
+    Serge
+    Quadrado
 
 
 
@@ -1136,8 +1142,7 @@ MonoBehaviour:
 
 
 
-    Glass
-    Breaking Sound
+    Glass Breaking Sound
 
 
     SwishSwoosh
@@ -1145,22 +1150,23 @@ MonoBehaviour:
 
 
 
-    Footstep Sounds
+    Footstep
+    Sounds
 
 
     Sound Works 12
 
 
 
-    FootSound
-    _ Refiil_Robot
+    FootSound _ Refiil_Robot
 
 
     https://freesound.org/
 
 
 
-    Wolking Sound _ Refill_Robot
+    Wolking
+    Sound _ Refill_Robot
 
 
     https://freesound.org/
@@ -1170,8 +1176,8 @@ MonoBehaviour:
 
 
 
-    UIC
-    CS426 Videogame Design'
+    UIC CS426 Videogame
+    Design'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

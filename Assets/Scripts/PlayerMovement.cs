@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G)){
             DropGlass();
         }
+
+        
     }
 
     private void TryPickUpGlass()

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Experiment : MonoBehaviour, IInteractable
 {
     public float detectRadius = 2f;
-    [SerializeField] private GameObject miniGameUI; // UI 오브젝트를 inspector에서 할당
+    [SerializeField] private GameObject miniGameUI; // Put object in inspecter
 
     public void Interact()
     {
@@ -14,21 +14,22 @@ public class Experiment : MonoBehaviour, IInteractable
             Glass glass = collider.GetComponent<Glass>();
             if (glass != null && glass.filled)
             {
-                Debug.Log("✔️ Filled glass detected. Activating MiniGame UI...");
+                Debug.Log("Filled glass detected. Activating MiniGame UI...");
                 if (miniGameUI != null)
                 {
                     miniGameUI.SetActive(true);
                 }
                 else
                 {
-                    Debug.LogWarning("⚠️ MiniGame UI is not assigned in the inspector.");
+                    Debug.LogWarning("MiniGame UI is not assigned in the inspector.");
                 }
                 return;
             }
         }
 
-        Debug.Log("❌ No filled glass nearby. Experiment not available.");
+        Debug.Log("No filled glass nearby. Experiment not available.");
     }
+
 
     void OnDrawGizmosSelected()
     {

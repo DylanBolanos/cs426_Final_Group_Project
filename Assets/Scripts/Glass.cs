@@ -8,8 +8,8 @@ public class Glass : MonoBehaviour, IInteractable
     private Chemical_zone currentZone;
     private MeshRenderer meshRenderer;
 
-    public Material baseMaterial;     // 비었을 때
-    public Material filledMaterial;   // 채워졌을 때
+    public Material baseMaterial;
+    public Material filledMaterial;
 
     void Start()
     {
