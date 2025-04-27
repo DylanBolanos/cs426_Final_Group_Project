@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject heldGlass = null;
     private Animator anim;
+    private DoorController currentDoor = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
@@ -59,6 +60,45 @@ public class PlayerMovement : MonoBehaviour
 
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Shelf"))
+        {
+            Debug.Log("Shelf tag detected on collision!");
+            currentDoor = collision.gameObject.GetComponent<DoorController>();
+            if (currentDoor != null)
+            {
+                Debug.Log("DoorController found, setting opening to true.");
+                currentDoor.opening = true;
+            }
+            else
+            {
+                Debug.LogWarning("DoorController component not found on the door object!");
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Collision exit with: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Shelf"))
+        {
+            DoorController door = collision.gameObject.GetComponent<DoorController>();
+            if (door != null && door == currentDoor)
+            {
+                Debug.Log("Exiting current door collision, setting opening to false.");
+                door.opening = false;
+                currentDoor = null;
+            }
+            else
+            {
+                Debug.LogWarning("DoorController not found on exit or mismatched door.");
+            }
+        }
+    }
+
 
     private void TryPickUpGlass()
     {
