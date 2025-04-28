@@ -3,6 +3,7 @@ using UnityEngine;
 public class Glass : MonoBehaviour, IInteractable
 {
     public bool filled = false;
+    public bool advanced_filled = false;
     private float contactTime = 0f;
     private bool inZone = false;
     private Chemical_zone currentZone;
@@ -10,6 +11,8 @@ public class Glass : MonoBehaviour, IInteractable
 
     public Material baseMaterial;
     public Material filledMaterial;
+    public Material advancedFilledMaterial;
+    
 
     void Start()
     {
@@ -34,6 +37,7 @@ public class Glass : MonoBehaviour, IInteractable
 
     void Update()
     {
+        if (transform.parent != null) return;
         if (inZone && !filled && currentZone != null)
         {
             contactTime += Time.deltaTime;
@@ -48,16 +52,24 @@ public class Glass : MonoBehaviour, IInteractable
             }
         }
     }
-    void UpdateMaterial()
+    public void UpdateMaterial()
     {
         if (meshRenderer == null) return;
 
         Material[] materials = meshRenderer.materials;
 
-        materials[0] = filled ? filledMaterial : baseMaterial;
+        if (advanced_filled)
+        {
+            materials[0] = advancedFilledMaterial;
+        }
+        else
+        {
+            materials[0] = filled ? filledMaterial : baseMaterial;
+        }
 
         meshRenderer.materials = materials;
     }
+
 
     void OnTriggerEnter(Collider other)
     {

@@ -16,10 +16,16 @@ public class MiniGameManager : MonoBehaviour
     private int successCount = 0;
     private int targetSuccess = 3;
     private bool gameCleared = false;
+    private Glass targetGlass;
 
     void Start()
     {
         GenerateNewRange();
+    }
+
+    public void SetTargetGlass(Glass glass)
+    {
+        targetGlass = glass;
     }
 
     void Update()
@@ -66,9 +72,17 @@ public class MiniGameManager : MonoBehaviour
             resultText.text = $"Success {successCount}/{targetSuccess}";
 
             if (successCount >= targetSuccess)
-            {
+{
                 resultText.text = "Game Cleared!";
                 gameCleared = true;
+
+                if (targetGlass != null)
+                {
+                    targetGlass.filled = false;
+                    targetGlass.advanced_filled = true;
+                    targetGlass.UpdateMaterial();
+                }
+
                 StartCoroutine(CloseAfterDelay());
                 return;
             }

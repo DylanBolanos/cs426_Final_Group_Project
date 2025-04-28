@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject heldGlass = null;
     private Animator anim;
     private DoorController currentDoor = null;
+    public GameObject brokenGlassPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
@@ -57,7 +58,12 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G)){
             DropGlass();
         }
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
+        if (heldGlass != null && heldGlass.scene.IsValid() && isRunning)
+        {
+            BreakGlassInHand();
+        }
         
     }
 
@@ -156,4 +162,25 @@ public class PlayerMovement : MonoBehaviour
             TryPickUpGlass(); // it is definitely work
         }
     }
+
+    private void BreakGlassInHand()
+    {
+        if (heldGlass == null) return;
+        AudioSource audioSource = heldGlass.GetComponent<AudioSource>();
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
+
+        GameObject brokenGlass = Instantiate(brokenGlassPrefab, heldGlass.transform.position, Quaternion.identity);
+        brokenGlass.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        Vector3 spawnPosition = heldGlass.transform.position;
+        spawnPosition.z += 0.355f; 
+        Destroy(heldGlass, 0.5f);
+
+        heldGlass = null;
+
+        Debug.Log("Flask is broken!");
+    }
+
 }

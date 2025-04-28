@@ -2,38 +2,90 @@ using UnityEngine;
 
 public class Experiment : MonoBehaviour, IInteractable
 {
-    public float detectRadius = 2f;
-    [SerializeField] private GameObject miniGameUI; // Put object in inspecter
+    [SerializeField] private GameObject miniGameUI;
+    public float detectRadius = 4f;
 
-    public void Interact()
+    private PlayerMovement player;
+    private bool playerInRange = false;
+
+    private void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, detectRadius);
-
-        foreach (Collider collider in colliders)
+        if (player == null)
         {
-            Glass glass = collider.GetComponent<Glass>();
-            if (glass != null && glass.filled)
+            player = FindObjectOfType<PlayerMovement>();
+            if (player != null)
             {
-                Debug.Log("Filled glass detected. Activating MiniGame UI...");
-                if (miniGameUI != null)
-                {
-                    miniGameUI.SetActive(true);
-                }
-                else
-                {
-                    Debug.LogWarning("MiniGame UI is not assigned in the inspector.");
-                }
+                Debug.Log("[test] Experiment figured out the Player!");
+            }
+            else
+            {
                 return;
             }
         }
 
-        Debug.Log("No filled glass nearby. Experiment not available.");
+        // 거리 체크 (XZ 평면)
+        Vector3 playerPos = player.transform.position;
+        Vector3 experimentPos = transform.position;
+        playerPos.y = 0f;
+        experimentPos.y = 0f;
+
+        float distance = Vector3.Distance(playerPos, experimentPos);
+
+        if (distance <= detectRadius)
+        {
+            if (!playerInRange)
+            {
+                playerInRange = true;
+                Debug.Log("[test] Player is in range of Experiment 1");
+            }
+        }
+        else
+        {
+            if (playerInRange)
+            {
+                playerInRange = false;
+                Debug.Log("[test] Player left the range of Experiment 1");
+            }
+        }
+
+        // Press F for interact
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
+        {
+            Interact();
+        }
     }
 
-
-    void OnDrawGizmosSelected()
+    public void Interact()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
+        if (player == null)
+            return;
+
+        if (player.heldGlass != null)
+        {
+            Glass glass = player.heldGlass.GetComponent<Glass>();
+            if (glass != null && glass.filled)
+            {
+                Debug.Log("Flask is filled!!, Game is able to run!");
+
+                if (miniGameUI != null)
+                {
+                    miniGameUI.SetActive(true);
+
+                    MiniGameManager miniGameManager = miniGameUI.GetComponent<MiniGameManager>();
+                    if (miniGameManager != null)
+                    {
+                        miniGameManager.SetTargetGlass(glass);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Flask is empty, it is not able to run experiment");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Please hold Flask, it is not able to run experiment");
+        }
     }
 }
