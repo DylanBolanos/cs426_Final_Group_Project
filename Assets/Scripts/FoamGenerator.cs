@@ -4,7 +4,7 @@ public class FoamGenerator : MonoBehaviour
 {
     public GameObject foamPrefab;
     public bool stopFoam = false;
-    public float spawnTime;
+    public bool createFoam;
     public float spawnDelay;
 
     private AudioSource BubblingAudio;
@@ -12,7 +12,7 @@ public class FoamGenerator : MonoBehaviour
     void Start(){
         //so when implimenting in game change spawntime to when its on the burner
         //and when its been set on the burner for some time then it will start bubbeling
-        InvokeRepeating("SpawnFoam",spawnTime,spawnDelay);
+
 
         AudioSource[] audios = GetComponents<AudioSource>();
         if (audios.Length >= 1)
@@ -22,11 +22,15 @@ public class FoamGenerator : MonoBehaviour
         }
     }
 
+    public void startSpawningFoam(){
+        InvokeRepeating("SpawnFoam",0.5f,spawnDelay);
+    }
+
     public void SpawnFoam(){
         GameObject foam = Instantiate(foamPrefab,transform.position,Quaternion.identity);
         // Only play if not already playing
         PlayBubbleSound();
-        Destroy(foam,3f);
+        Destroy(foam,2f);
         if(stopFoam){
             CancelInvoke("SpawnFoam");
             if (BubblingAudio != null) BubblingAudio.Stop();
@@ -34,8 +38,7 @@ public class FoamGenerator : MonoBehaviour
     }
 
     
-        void PlayBubbleSound()
-        {
+        void PlayBubbleSound(){
         if (BubblingAudio != null && !BubblingAudio.isPlaying)
             BubblingAudio.Play();
         }

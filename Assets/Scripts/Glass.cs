@@ -16,9 +16,13 @@ public class Glass : MonoBehaviour, IInteractable
     private bool inchemZone2 = false;
     private bool inchemZone3 = false;
 
+    private bool inEndZone = false;
+
     private Chemical_zone chemical1;
     private Chemical2_zon chemical2;
     private Chemical3_zone chemical3;
+
+    private gameEndArea endZone;
 
     private MeshRenderer meshRenderer;
 
@@ -86,6 +90,10 @@ public class Glass : MonoBehaviour, IInteractable
                 UpdateMaterial();
             }
         }
+        else if(inEndZone){
+            //impliment win
+        }
+
     }
 
     private void ApplyChemicalEffect(ChemicalType type)
@@ -164,6 +172,9 @@ public class Glass : MonoBehaviour, IInteractable
             chemical3 = other.GetComponent<Chemical3_zone>();
             inchemZone3 = true;
         }
+        else if (other.CompareTag("gameEndArea")){        
+            inEndZone = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -182,5 +193,9 @@ public class Glass : MonoBehaviour, IInteractable
             chemical3 = null;
             inchemZone3 = false;
         }
+        else if(other.CompareTag("gameEndArea")){
+            inEndZone = false;
+        }
     }
 }
+

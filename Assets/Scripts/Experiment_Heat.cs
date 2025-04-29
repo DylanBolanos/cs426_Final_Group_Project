@@ -57,7 +57,7 @@ public class Experiment_Heat : MonoBehaviour
             {
                 float chance = Random.Range(0f, 1f);
 
-                if (chance <= 0.7f)
+                if (chance <= 0.8f)
                 {
                     heldGlass.CaCO3_filled = false;
                     heldGlass.CaO_filled = true;
@@ -106,7 +106,7 @@ public class Experiment_Heat : MonoBehaviour
         {
             Glass glass = collider.GetComponent<Glass>();
             if (glass != null &&
-                !glass.HCI_filled && !glass.NaCl_filled && !glass.NaOH_filled &&
+                !glass.HCI_filled && !glass.NaCl_filled && glass.NaOH_filled &&
                 !glass.CaCO3_filled && !glass.CaO_filled && !glass.Co2_filled)
             {
                 return glass;

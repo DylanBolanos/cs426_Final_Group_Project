@@ -99,9 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c298bd409b22040bb922826cac0179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filled: 0
+  HCI_filled: 0
+  NaCl_filled: 0
+  NaOH_filled: 0
+  CaCO3_filled: 0
+  CaO_filled: 0
+  Co2_filled: 0
+  LiquidNaCl_filled: 0
   baseMaterial: {fileID: 2100000, guid: 62dad06c47d1d1a448901a67f077f0b6, type: 2}
   filledMaterial: {fileID: 2100000, guid: a0b376915f4283c4e9db27aa35394b89, type: 2}
+  NaClFilledMaterial: {fileID: 2100000, guid: 4004ee1ea5e2efc45ba377637984d350, type: 2}
+  NaOHFilledMaterial: {fileID: 2100000, guid: 88e8057294796e6428954fc581440367, type: 2}
+  CaCO3FilledMaterial: {fileID: 2100000, guid: c94ad2dff80b8004a93c263d6023dff0, type: 2}
+  CaOFilledMaterial: {fileID: 2100000, guid: 1ccb4266fec68415e97fe7c264b6c7fb, type: 2}
+  Co2FilledMaterial: {fileID: 2100000, guid: 94c11be5b5b74c440a5c2fc75dc65d88, type: 2}
+  LiquidNaCl_filledMaterial: {fileID: 2100000, guid: 65529ac748f009d4dbdee8d40e2e6402, type: 2}
 --- !u!54 &6884840888530753984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,7 +139,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &2943115925717565285
 CapsuleCollider:
