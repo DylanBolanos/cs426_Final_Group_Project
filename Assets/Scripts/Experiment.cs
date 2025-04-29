@@ -23,7 +23,6 @@ public class Experiment : MonoBehaviour, IInteractable
             }
         }
 
-        // 거리 체크 (XZ 평면)
         Vector3 playerPos = player.transform.position;
         Vector3 experimentPos = transform.position;
         playerPos.y = 0f;
@@ -65,8 +64,14 @@ public class Experiment : MonoBehaviour, IInteractable
             Glass glass = player.heldGlass.GetComponent<Glass>();
             if (glass != null && glass.HCI_filled)
             {
-                Debug.Log("Flask is filled!!, Game is able to run!");
+                
 
+                if (!CheckNearbyNaOHGlass())
+                {
+                    Debug.LogWarning("No NaOH-filled Flask nearby! Cannot start experiment.");
+                    return;
+                }
+                Debug.Log("Flask is filled!!, Game is able to run!");
                 if (miniGameUI != null)
                 {
                     miniGameUI.SetActive(true);
@@ -88,4 +93,22 @@ public class Experiment : MonoBehaviour, IInteractable
             Debug.LogWarning("Please hold Flask, it is not able to run experiment");
         }
     }
+    private bool CheckNearbyNaOHGlass()
+    {
+        float checkRadius = 5f;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            Glass nearbyGlass = collider.GetComponent<Glass>();
+            if (nearbyGlass != null && nearbyGlass.NaOH_filled)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -17,6 +17,7 @@ public class MiniGameManager : MonoBehaviour
     private int targetSuccess = 3;
     private bool gameCleared = false;
     private Glass targetGlass;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
@@ -26,6 +27,11 @@ public class MiniGameManager : MonoBehaviour
     public void SetTargetGlass(Glass glass)
     {
         targetGlass = glass;
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.canPickUp = false;
+        }
     }
 
     void Update()
@@ -100,6 +106,34 @@ public class MiniGameManager : MonoBehaviour
     IEnumerator CloseAfterDelay()
     {
         yield return new WaitForSeconds(2f);
+        ClearNearbyNaOHFlasks();
+        if (playerMovement != null)
+        {
+            playerMovement.canPickUp = true;
+        }
         gameObject.SetActive(false); // or use SceneManager.LoadScene if needed
     }
+
+    private void ClearNearbyNaOHFlasks()
+    {
+        float checkRadius = 5f;
+
+        // Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius);
+        Collider[] colliders = Physics.OverlapSphere(playerMovement.transform.position, checkRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            Glass glass = collider.GetComponent<Glass>();
+
+            if (glass != null && glass != targetGlass && glass.NaOH_filled)
+            {
+                glass.NaOH_filled = false;
+                glass.UpdateMaterial();
+                Debug.Log("Nearby NaOH Flask reset to normal.");
+            }
+            Debug.Log("11111111111111111");
+        }
+    }
+
+
 }

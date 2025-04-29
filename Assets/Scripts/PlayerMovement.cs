@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private DoorController currentDoor = null;
     public GameObject brokenGlassPrefab;
+    public bool canPickUp = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Rigidbody rb;
@@ -108,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void TryPickUpGlass()
     {
+
+        if (!canPickUp) return;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (Collider collider in hitColliders)
         {
@@ -123,25 +126,34 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
     private void DropGlass()
     {
+        if (heldGlass == null)
+        {
+            Debug.LogWarning("DropGlass() called, but no glass is currently held!");
+            return;
+        }
+
         heldGlass.transform.SetParent(null);
-        heldGlass.GetComponent<Rigidbody>().isKinematic = false;
+
+        Rigidbody rb = heldGlass.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+
         heldGlass = null;
         Debug.Log("Player Dropped off Glass");
-        // if (heldGlass != null)
-        // {
-        //     heldGlass.transform.SetParent(null);
-        //     Rigidbody rb = heldGlass.GetComponent<Rigidbody>();
-        //     if (rb != null)
-        //     {
-        //         rb.isKinematic = false;
-        //     }
-        //     heldGlass = null;
-        //     Debug.Log("Player Dropped off Glass");
-        // }
     }
+
+    // private void DropGlass()
+    // {
+    //     heldGlass.transform.SetParent(null);
+    //     heldGlass.GetComponent<Rigidbody>().isKinematic = false;
+    //     heldGlass = null;
+    //     Debug.Log("Player Dropped off Glass");
+        
+    // }
     
     private void TryInteract(){
         if (nearbyInteractable != null)

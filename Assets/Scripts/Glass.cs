@@ -94,11 +94,18 @@ public class Glass : MonoBehaviour, IInteractable
         else if (NaOH_filled)
         {
             materials[0] = NaOHFilledMaterial;
+        }else if (HCI_filled)
+        {
+            materials[0] = filledMaterial;
         }
         else
         {
-            materials[0] = HCI_filled ? filledMaterial : baseMaterial;
+            materials[0] = baseMaterial;
         }
+        // else
+        // {
+        //     materials[0] = HCI_filled ? filledMaterial : baseMaterial;
+        // }
 
         meshRenderer.materials = materials;
     }
