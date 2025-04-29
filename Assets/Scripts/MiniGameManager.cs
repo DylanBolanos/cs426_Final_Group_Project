@@ -85,7 +85,7 @@ public class MiniGameManager : MonoBehaviour
                 if (targetGlass != null)
                 {
                     targetGlass.HCI_filled = false;
-                    targetGlass.advanced_filled = true;
+                    targetGlass.NaCl_filled = true;
                     targetGlass.UpdateMaterial();
                 }
 

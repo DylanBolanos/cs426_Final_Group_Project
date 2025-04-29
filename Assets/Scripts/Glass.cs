@@ -3,7 +3,7 @@ using UnityEngine;
 public class Glass : MonoBehaviour, IInteractable
 {
     public bool HCI_filled = false;
-    public bool advanced_filled = false;
+    public bool NaCl_filled = false;
     public bool NaOH_filled = false;
     private float contactTime = 0f;
     private bool inZone = false;
@@ -14,7 +14,7 @@ public class Glass : MonoBehaviour, IInteractable
 
     public Material baseMaterial;
     public Material filledMaterial;
-    public Material advancedFilledMaterial;
+    public Material NaClFilledMaterial;
     public Material NaOHFilledMaterial;
 
     void Start()
@@ -52,7 +52,7 @@ public class Glass : MonoBehaviour, IInteractable
                 UpdateMaterial();
             }
         }
-        else if (inchemZone2 && !HCI_filled && chemical2 != null && !advanced_filled)
+        else if (inchemZone2 && !HCI_filled && chemical2 != null && !NaCl_filled)
         {
             contactTime += Time.deltaTime;
             if (contactTime >= 5f && chemical2.HasCapacity())
@@ -71,13 +71,13 @@ public class Glass : MonoBehaviour, IInteractable
         {
             HCI_filled = true;
             NaOH_filled = false;
-            advanced_filled = false;
+            NaCl_filled = false;
         }
         else if (type == ChemicalType.NaOH)
         {
             HCI_filled = false;
             NaOH_filled = true;
-            advanced_filled = false;
+            NaCl_filled = false;
         }
     }
 
@@ -87,9 +87,9 @@ public class Glass : MonoBehaviour, IInteractable
 
         Material[] materials = meshRenderer.materials;
 
-        if (advanced_filled)
+        if (NaCl_filled)
         {
-            materials[0] = advancedFilledMaterial;
+            materials[0] = NaClFilledMaterial;
         }
         else if (NaOH_filled)
         {
