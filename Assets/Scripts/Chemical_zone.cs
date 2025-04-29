@@ -4,7 +4,7 @@ public class Chemical_zone : MonoBehaviour
 {
     public int maxCapacity = 3;
     public int currentCapacity = 3;
-    public ChemicalType type = ChemicalType.Acid;  // 🔥 이 Zone은 Acid zone!
+    public ChemicalType type = ChemicalType.Acid; 
 
     public bool HasCapacity()
     {

@@ -129,9 +129,7 @@ public class MiniGameManager : MonoBehaviour
             {
                 glass.NaOH_filled = false;
                 glass.UpdateMaterial();
-                Debug.Log("Nearby NaOH Flask reset to normal.");
             }
-            Debug.Log("11111111111111111");
         }
     }
 
