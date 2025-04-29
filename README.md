@@ -94,10 +94,10 @@ Dylan Bolanos:
 4) Used a Mechanim to walk and clean with the robot from 1
 
 Assignment 8
-Adapted Shader
-JoonYoung Ma:
-From the Feedback 3, I realized I need to some difference between empty glass and filled glass in graphic. To enhance the visual clarity and immersion of the game, I implemented a custom shader for the empty glass object. The new shader gives the glass a transparent, slightly glowing appearance with soft rim lighting, and litle refraction.
-Elmerson Tedja: Created additional shaders, added background music and sound effects (sliding door sounds) to the game.
+  Adapted Shader
+  JoonYoung Ma:
+  From the Feedback 3, I realized I need to some difference between empty glass and filled glass in graphic. To enhance the visual clarity and immersion of the game, I implemented a custom shader for the empty glass object. The new shader gives the glass a transparent, slightly glowing appearance with soft rim lighting, and litle refraction.
+  Elmerson Tedja: Created additional shaders, added background music and sound effects (sliding door sounds) to the game.
 
 
 Response about Alpha Release Feedback
@@ -134,8 +134,8 @@ Fixed: That was Alpha Release version, We will add extra interactive activities.
 
 
 Assignment 9
-JoonYoung Ma: Added more playable elements into the game for finishing touches.
-Elmerson Tedja: Adjusted AI collision to not be inside the player and block their POV. This should make the game more playable.
+  JoonYoung Ma: Added more playable elements into the game for finishing touches.
+  Elmerson Tedja: Adjusted AI collision to not be inside the player and block their POV. This should make the game more playable.
 
 
 Citation
