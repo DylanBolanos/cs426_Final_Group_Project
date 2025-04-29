@@ -106,11 +106,17 @@ MonoBehaviour:
   NaCl_filled: 0
   NaOH_filled: 0
   CaCO3_filled: 0
+  CaO_filled: 0
+  Co2_filled: 0
+  LiquidNaCl_filled: 0
   baseMaterial: {fileID: 2100000, guid: f61a3932d9294844c924c9557ebc2706, type: 2}
   filledMaterial: {fileID: 2100000, guid: a0b376915f4283c4e9db27aa35394b89, type: 2}
   NaClFilledMaterial: {fileID: 2100000, guid: e767d86cbf3099a478162f1692b1edf3, type: 2}
   NaOHFilledMaterial: {fileID: 2100000, guid: 5c4d526e95a945e46abbe1645a318634, type: 2}
   CaCO3FilledMaterial: {fileID: 2100000, guid: 5c4854f1dd0cbe84a92d1ba0e1baffc6, type: 2}
+  CaOFilledMaterial: {fileID: 2100000, guid: 136beb9ca8a36994ca60918c49ee2767, type: 2}
+  Co2FilledMaterial: {fileID: 2100000, guid: d987ec024d9a90d4c8deb0ba94e48b99, type: 2}
+  LiquidNaCl_filledMaterial: {fileID: 2100000, guid: a5fe6931b64e0de469d6a1b5b2a23513, type: 2}
 --- !u!54 &5554959115746322025
 Rigidbody:
   m_ObjectHideFlags: 0

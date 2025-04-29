@@ -6,6 +6,9 @@ public class Glass : MonoBehaviour, IInteractable
     public bool NaCl_filled = false;
     public bool NaOH_filled = false;
     public bool CaCO3_filled = false;
+    public bool CaO_filled = false;
+    public bool Co2_filled = false;
+    public bool LiquidNaCl_filled = false;
 
     private float contactTime = 0f;
 
@@ -24,6 +27,9 @@ public class Glass : MonoBehaviour, IInteractable
     public Material NaClFilledMaterial;
     public Material NaOHFilledMaterial;
     public Material CaCO3FilledMaterial;
+    public Material CaOFilledMaterial;
+    public Material Co2FilledMaterial;
+    public Material LiquidNaCl_filledMaterial;
 
     void Start()
     {
@@ -121,6 +127,15 @@ public class Glass : MonoBehaviour, IInteractable
             materials[0] = filledMaterial;
         }else if (CaCO3_filled){
             materials[0] = CaCO3FilledMaterial;
+        }else if (CaO_filled){
+        materials[0] = CaOFilledMaterial;
+        }
+        else if (Co2_filled)
+        {
+            materials[0] = Co2FilledMaterial;
+        }else if (LiquidNaCl_filled)
+        {
+            materials[0] = LiquidNaCl_filledMaterial;
         }
         else
         {
