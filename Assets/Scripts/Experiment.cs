@@ -63,7 +63,7 @@ public class Experiment : MonoBehaviour, IInteractable
         if (player.heldGlass != null)
         {
             Glass glass = player.heldGlass.GetComponent<Glass>();
-            if (glass != null && glass.filled)
+            if (glass != null && glass.HCI_filled)
             {
                 Debug.Log("Flask is filled!!, Game is able to run!");
 

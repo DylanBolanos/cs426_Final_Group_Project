@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Glass : MonoBehaviour, IInteractable
 {
-    public bool filled = false;
+    public bool HCI_filled = false;
     public bool advanced_filled = false;
+    public bool NaOH_filled = false;
     private float contactTime = 0f;
     private bool inZone = false;
-    private Chemical_zone currentZone;
+    private bool inchemZone2 = false;
+    private Chemical_zone chemical1;
+    private Chemical2_zon chemical2;
     private MeshRenderer meshRenderer;
 
     public Material baseMaterial;
     public Material filledMaterial;
     public Material advancedFilledMaterial;
-    
+    public Material NaOHFilledMaterial;
 
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-       // UpdateMaterial();
     }
 
     public void Interact()
@@ -38,20 +40,47 @@ public class Glass : MonoBehaviour, IInteractable
     void Update()
     {
         if (transform.parent != null) return;
-        if (inZone && !filled && currentZone != null)
+
+        if (inZone && !HCI_filled && chemical1 != null)
         {
             contactTime += Time.deltaTime;
-            Debug.Log("Zone will fill Flask within 5sec" + contactTime);
-
-            if (contactTime >= 5f && currentZone.HasCapacity()) // need 5 seconds for charging
+            if (contactTime >= 5f && chemical1.HasCapacity())
             {
-                filled = true;
-                currentZone.UseOneCharge();
-                Debug.Log("Glass filled!!");
+                ApplyChemicalEffect(chemical1.type);
+                chemical1.UseOneCharge();
+                Debug.Log("Glass filled from Acid zone!");
+                UpdateMaterial();
+            }
+        }
+        else if (inchemZone2 && !HCI_filled && chemical2 != null && !advanced_filled)
+        {
+            contactTime += Time.deltaTime;
+            if (contactTime >= 5f && chemical2.HasCapacity())
+            {
+                ApplyChemicalEffect(chemical2.type);
+                chemical2.UseOneCharge();
+                Debug.Log("Glass filled from NaOH zone!");
                 UpdateMaterial();
             }
         }
     }
+
+    private void ApplyChemicalEffect(ChemicalType type)
+    {
+        if (type == ChemicalType.Acid)
+        {
+            HCI_filled = true;
+            NaOH_filled = false;
+            advanced_filled = false;
+        }
+        else if (type == ChemicalType.NaOH)
+        {
+            HCI_filled = false;
+            NaOH_filled = true;
+            advanced_filled = false;
+        }
+    }
+
     public void UpdateMaterial()
     {
         if (meshRenderer == null) return;
@@ -62,21 +91,29 @@ public class Glass : MonoBehaviour, IInteractable
         {
             materials[0] = advancedFilledMaterial;
         }
+        else if (NaOH_filled)
+        {
+            materials[0] = NaOHFilledMaterial;
+        }
         else
         {
-            materials[0] = filled ? filledMaterial : baseMaterial;
+            materials[0] = HCI_filled ? filledMaterial : baseMaterial;
         }
 
         meshRenderer.materials = materials;
     }
 
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Chemical_zone"))
         {
-            currentZone = other.GetComponent<Chemical_zone>();
+            chemical1 = other.GetComponent<Chemical_zone>();
             inZone = true;
+        }
+        else if (other.CompareTag("Chemical_zone2"))
+        {
+            chemical2 = other.GetComponent<Chemical2_zon>();
+            inchemZone2 = true;
         }
     }
 
@@ -84,8 +121,13 @@ public class Glass : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Chemical_zone"))
         {
-            currentZone = null;
+            chemical1 = null;
             inZone = false;
+        }
+        else if (other.CompareTag("Chemical_zone2"))
+        {
+            chemical2 = null;
+            inchemZone2 = false;
         }
     }
 }

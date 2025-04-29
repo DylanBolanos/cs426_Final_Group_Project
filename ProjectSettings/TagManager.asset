@@ -12,6 +12,7 @@ TagManager:
   - Shelf
   - BrokenGlass
   - Flask_zone
+  - Chemical_zone2
   layers:
   - Default
   - TransparentFX

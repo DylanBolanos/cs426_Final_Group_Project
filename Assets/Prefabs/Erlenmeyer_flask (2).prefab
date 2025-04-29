@@ -102,11 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c298bd409b22040bb922826cac0179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filled: 0
+  HCI_filled: 0
   advanced_filled: 0
+  NaOH_filled: 0
   baseMaterial: {fileID: 2100000, guid: f61a3932d9294844c924c9557ebc2706, type: 2}
   filledMaterial: {fileID: 2100000, guid: a0b376915f4283c4e9db27aa35394b89, type: 2}
   advancedFilledMaterial: {fileID: 2100000, guid: e767d86cbf3099a478162f1692b1edf3, type: 2}
+  NaOHFilledMaterial: {fileID: 2100000, guid: 5c4d526e95a945e46abbe1645a318634, type: 2}
 --- !u!54 &5554959115746322025
 Rigidbody:
   m_ObjectHideFlags: 0
