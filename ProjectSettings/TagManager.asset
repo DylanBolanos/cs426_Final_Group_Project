@@ -13,6 +13,7 @@ TagManager:
   - BrokenGlass
   - Flask_zone
   - Chemical_zone2
+  - Chemical_zone3
   layers:
   - Default
   - TransparentFX

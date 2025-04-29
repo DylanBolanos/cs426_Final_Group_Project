@@ -96,6 +96,18 @@ public class Refill_Robot : MonoBehaviour
             }
         }
 
+        foreach (var zone in FindObjectsOfType<Chemical3_zone>())
+        {
+            if (zone != null && zone.currentCapacity < 3)
+            {
+                zoneToRefill = zone;
+                flaskZoneTarget = null;
+                currentState = State.MovingToZone;
+                Debug.Log("Found Chemical3_zone, Refill_Robot is heading there!");
+                return;
+            }
+        }
+
         foreach (var zone in FindObjectsOfType<Flask_zone>())
         {
             var flaskZoneType = zone.GetType();
@@ -111,6 +123,9 @@ public class Refill_Robot : MonoBehaviour
                 return;
             }
         }
+
+
+
         if (zoneToRefill == null && flaskZoneTarget == null)
         {
             currentState = State.Wandering;

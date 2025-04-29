@@ -1,5 +1,6 @@
 public enum ChemicalType
 {
     Acid,
-    NaOH
+    NaOH,
+    CaCO3
 }

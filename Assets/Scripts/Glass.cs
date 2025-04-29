@@ -5,17 +5,25 @@ public class Glass : MonoBehaviour, IInteractable
     public bool HCI_filled = false;
     public bool NaCl_filled = false;
     public bool NaOH_filled = false;
+    public bool CaCO3_filled = false;
+
     private float contactTime = 0f;
+
     private bool inZone = false;
     private bool inchemZone2 = false;
+    private bool inchemZone3 = false;
+
     private Chemical_zone chemical1;
     private Chemical2_zon chemical2;
+    private Chemical3_zone chemical3;
+
     private MeshRenderer meshRenderer;
 
     public Material baseMaterial;
     public Material filledMaterial;
     public Material NaClFilledMaterial;
     public Material NaOHFilledMaterial;
+    public Material CaCO3FilledMaterial;
 
     void Start()
     {
@@ -62,6 +70,15 @@ public class Glass : MonoBehaviour, IInteractable
                 Debug.Log("Glass filled from NaOH zone!");
                 UpdateMaterial();
             }
+        }else if(inchemZone3 && !HCI_filled && chemical3 != null && !NaCl_filled && !CaCO3_filled){
+            contactTime += Time.deltaTime;
+            if (contactTime >= 5f && chemical3.HasCapacity())
+            {
+                ApplyChemicalEffect(chemical3.type);
+                chemical3.UseOneCharge();
+                Debug.Log("Glass filled from CaCO3 zone!");
+                UpdateMaterial();
+            }
         }
     }
 
@@ -78,6 +95,11 @@ public class Glass : MonoBehaviour, IInteractable
             HCI_filled = false;
             NaOH_filled = true;
             NaCl_filled = false;
+        }else if(type == ChemicalType.CaCO3){
+             HCI_filled = false;
+            NaOH_filled = false;
+            NaCl_filled = false;
+            CaCO3_filled = true;
         }
     }
 
@@ -97,6 +119,8 @@ public class Glass : MonoBehaviour, IInteractable
         }else if (HCI_filled)
         {
             materials[0] = filledMaterial;
+        }else if (CaCO3_filled){
+            materials[0] = CaCO3FilledMaterial;
         }
         else
         {
@@ -121,6 +145,9 @@ public class Glass : MonoBehaviour, IInteractable
         {
             chemical2 = other.GetComponent<Chemical2_zon>();
             inchemZone2 = true;
+        }else if(other.CompareTag("Chemical_zone3")){
+            chemical3 = other.GetComponent<Chemical3_zone>();
+            inchemZone3 = true;
         }
     }
 
@@ -135,6 +162,10 @@ public class Glass : MonoBehaviour, IInteractable
         {
             chemical2 = null;
             inchemZone2 = false;
+        }
+        else if(other.CompareTag("Chemical_zone3")){
+            chemical3 = null;
+            inchemZone3 = false;
         }
     }
 }
