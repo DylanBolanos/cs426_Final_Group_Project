@@ -7,6 +7,7 @@ How to play:
   Use the mouse to rotate the POV of the player around.
   Use F to interact with objects or pick up flasks.
   Use G to drop flasks.
+  Shift with W-A-S-D to run the character.
 
 You are a aspiring chemist with a questionable degree preforming experiments to make more money and upgrade the lab to repeat the cycle
 
@@ -17,15 +18,18 @@ Target audience:
 
 Players:  
   How many players:
-    Objective is to scale the game to multiplayer, but can be played by only one player.
+    In this game, only single player can play game.
   Roles for each player:
-    Each player will have the same privileges of other players allowing them to corporate as they see fit
+    The player need to make specific chemical what the game required.
   Interaction Pattern:
-    Cooperative play as they will work together towards a common goal
+    There is no any time limits, so Player is free to self organize based on their preferred tasks.
+    Interact with all available lab equipment and chemical zone.
+    Share responsibilties, such as retreving Flask, handing experiments.
+    Player can pick up and carry flask, fill it with chemicals, and perform reactions using available stations.
 
 Objectives:
   Main objective:
-    Work in the laboratory and complete experiments to earn more cash!
+    Work in the laboratory and work for satisfying the game requirement.
   Side objective:
     Completing experiments will give you money to buy more equipment, thus allowing more experiments!
   Categorization of Objectives
@@ -33,18 +37,21 @@ Objectives:
 
 Procedures:
   Actions/how:
-    The player will be able to interact with their equipment that they buy to run the experiments. 
+    The player can interact with all lab equipment to conduct experiments. This includes picking up glassware, filling it with chemicals, and placing it into reaction         stations to perform chemical transformations.
   Who:
-    All players will be able to interact with all equipment, and collision of players while holding glassware will cause them to drop breaking what they had
+    As a single-player experience, the player has full control over all actions and interactions in the lab. There are no other characters or roles.
   Where:
-    Your lab that you can customize
+    All interactions take place within a compact, customizable laboratory space where tools and stations are physically arranged.
   When: 
-    No time limit, only earning more money by completing in a quick manner
+    There is no time limit or progression system. The player can experiment freely at their own pace, focusing on careful handling and successful execution.
 
 Rules:
-  Each day will have a different assignment for the lab to complete
-  They will have you use specific equipment and thus the rules of the game will be to complete the experiment
-  If you fail to many experiments you will inevitably run out of money to fund the lab and lose the game
+  The player can freely perform experiments using the availale lab tools and chemicals
+  There are no day-by-day assignment with deadline, the player can choose what to experiment on.
+  Some experiments have specific requirements or conditions
+  Flask is fragile, if the player ran or misusedm it will break and leave shards.
+  Chemical sources have limited capacity and cannot be used infinitely - planning is essential.
+  For the realistic, the game encourges careful experimentation, and random trial and error.
 
 Resorces:
   Equipment:
@@ -53,13 +60,20 @@ Resorces:
     Each day will cost the player an amount of money to keep the lab open. As well the experiment will also cost money to do, making the player pay to play
   Objective:
     To keep the lab running, and play as long as possible 
-  Time: 
-    Each day you will have a speed bonus time allowing the player to earn extra money if you complete by a certain time
+  Flask(Glassware): 
+  Used to contain and transport chemicals, if broken,  it must be replaced using the empty flask and dispenser, again.
+  Equipment:
+  A set of pre-placed station includes heating and mixing chemicals
+    
 
 Conflict:
   Keeping the lab running:
     This will be the main conflict of the game
     Running experiments, and earning money will be the core gameplay look
+    Handling fragile glassware carefully
+    Performing experiments with correct conditions and timing
+    Avoiding resource waste, as chemicals and materials are limited
+    Coordinating actions (even in solo play) to optimize the use of available tools and avoid accidental failures
 
 Google Design Document
 https://docs.google.com/document/d/1hdoo0mKjeMYYgq0EDBBi-C8dSeENMVNMY_13-_xXsoE/edit?usp=sharing 
