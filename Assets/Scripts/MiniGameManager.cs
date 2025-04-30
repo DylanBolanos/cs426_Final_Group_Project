@@ -133,5 +133,20 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
+    public void ResetMiniGame(Glass glass)
+    {
+        targetGlass = glass;
+        gameCleared = false;
+        successCount = 0;
+        slider.value = 0f;
+        scrollingRight = true;
+        GenerateNewRange();
+        resultText.text = "";
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement != null)
+            playerMovement.canPickUp = false;
+
+        gameObject.SetActive(true);
+    }
 
 }

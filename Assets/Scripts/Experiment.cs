@@ -79,7 +79,8 @@ public class Experiment : MonoBehaviour, IInteractable
                     MiniGameManager miniGameManager = miniGameUI.GetComponent<MiniGameManager>();
                     if (miniGameManager != null)
                     {
-                        miniGameManager.SetTargetGlass(glass);
+                        // miniGameManager.SetTargetGlass(glass);
+                        miniGameManager.ResetMiniGame(glass);
                     }
                 }
             }

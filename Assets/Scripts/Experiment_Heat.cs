@@ -57,7 +57,7 @@ public class Experiment_Heat : MonoBehaviour
             {
                 float chance = Random.Range(0f, 1f);
 
-                if (chance <= 0.8f)
+                if (chance <= 0.99f)
                 {
                     heldGlass.CaCO3_filled = false;
                     heldGlass.CaO_filled = true;
@@ -98,6 +98,23 @@ public class Experiment_Heat : MonoBehaviour
     }
 
 
+    // private Glass FindNearbyEmptyGlass()
+    // {
+    //     Collider[] colliders = Physics.OverlapSphere(transform.position, detectRadius);
+
+    //     foreach (Collider collider in colliders)
+    //     {
+    //         Glass glass = collider.GetComponent<Glass>();
+    //         if (glass != null &&
+    //             !glass.HCI_filled && !glass.NaCl_filled && glass.NaOH_filled &&
+    //             !glass.CaCO3_filled && !glass.CaO_filled && !glass.Co2_filled)
+    //         {
+    //             return glass;
+    //         }
+    //     }
+
+    //     return null;
+    // }
     private Glass FindNearbyEmptyGlass()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectRadius);
@@ -106,8 +123,9 @@ public class Experiment_Heat : MonoBehaviour
         {
             Glass glass = collider.GetComponent<Glass>();
             if (glass != null &&
-                !glass.HCI_filled && !glass.NaCl_filled && glass.NaOH_filled &&
-                !glass.CaCO3_filled && !glass.CaO_filled && !glass.Co2_filled)
+                !glass.HCI_filled && !glass.NaCl_filled && !glass.NaOH_filled &&
+                !glass.CaCO3_filled && !glass.CaO_filled && !glass.Co2_filled &&
+                !glass.LiquidNaCl_filled)
             {
                 return glass;
             }
@@ -115,6 +133,7 @@ public class Experiment_Heat : MonoBehaviour
 
         return null;
     }
+
 
     private Glass FindNearbyNaClGlass()
     {
