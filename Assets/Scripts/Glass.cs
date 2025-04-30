@@ -1,7 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 public class Glass : MonoBehaviour, IInteractable
 {
+    public TextMeshPro chemical_name;
     public bool HCI_filled = false;
     public bool NaCl_filled = false;
     public bool NaOH_filled = false;
@@ -38,6 +40,10 @@ public class Glass : MonoBehaviour, IInteractable
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        if (chemical_name != null)
+        {
+            chemical_name.text = "Empty";
+        }
     }
 
     public void Interact()
@@ -126,28 +132,36 @@ public class Glass : MonoBehaviour, IInteractable
         if (NaCl_filled)
         {
             materials[0] = NaClFilledMaterial;
+            UpdateStatusText("NaCl");
         }
         else if (NaOH_filled)
         {
             materials[0] = NaOHFilledMaterial;
+            UpdateStatusText("NaOH");
         }else if (HCI_filled)
         {
             materials[0] = filledMaterial;
+            UpdateStatusText("HCl");
         }else if (CaCO3_filled){
             materials[0] = CaCO3FilledMaterial;
+            UpdateStatusText("CaCO₃");
         }else if (CaO_filled){
-        materials[0] = CaOFilledMaterial;
+            materials[0] = CaOFilledMaterial;
+            UpdateStatusText("CaO");
         }
         else if (Co2_filled)
         {
             materials[0] = Co2FilledMaterial;
+            UpdateStatusText("CO₂");
         }else if (LiquidNaCl_filled)
         {
             materials[0] = LiquidNaCl_filledMaterial;
+            UpdateStatusText("Liquid NaCl");
         }
         else
         {
             materials[0] = baseMaterial;
+            UpdateStatusText("Empty");
         }
         // else
         // {
@@ -197,5 +211,12 @@ public class Glass : MonoBehaviour, IInteractable
             inEndZone = false;
         }
     }
+    private void UpdateStatusText(string label)
+    {
+        if (chemical_name != null)
+        {
+            chemical_name.text = label;
+        }
+}
 }
 
